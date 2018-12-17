@@ -7,11 +7,18 @@ import liliana.piratas.Graficos;
 import liliana.piratas.Input.TouchEvent;
 import liliana.piratas.Pantalla;
 
+/**
+ * Help screen 2
+ */
 public class PantallaAyuda2 extends Pantalla {
     public PantallaAyuda2(Juego juego) {
         super(juego);
     }
 
+    /**
+     * Update help screen 2
+     * @param deltaTime the time
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = juego.getInput().getTouchEvents();
@@ -31,6 +38,10 @@ public class PantallaAyuda2 extends Pantalla {
         }
     }
 
+    /**
+     * Draw help screen 2
+     * @param deltaTime the time
+     */
     @Override
     public void present(float deltaTime) {
         Graficos g = juego.getGraphics();

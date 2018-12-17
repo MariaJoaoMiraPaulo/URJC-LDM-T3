@@ -8,10 +8,17 @@ import java.io.OutputStreamWriter;
 
 import liliana.piratas.FileIO;
 
+/**
+ * Configuration class
+ */
 public class Configuraciones {
     public static boolean sonidoHabilitado = true;
     public static int[] maxPuntuaciones = new int[] { 100, 80, 50, 30, 10 };
 
+    /**
+     * Read files
+     * @param files the files
+     */
     public static void cargar(FileIO files) {
         BufferedReader in = null;
         try {
@@ -34,6 +41,10 @@ public class Configuraciones {
         }
     }
 
+    /**
+     * Saves file
+     * @param files the files
+     */
     public static void save(FileIO files) {
         BufferedWriter out = null;
         try {
@@ -56,6 +67,10 @@ public class Configuraciones {
         }
     }
 
+    /**
+     * Adds a score
+     * @param score the score
+     */
     public static void addScore(int score) {
         for (int i = 0; i < 5; i++) {
             if (maxPuntuaciones[i] < score) {

@@ -9,10 +9,17 @@ import android.content.res.AssetManager;
 import android.os.Environment;
 import liliana.piratas.FileIO;
 
+/**
+ * The AndroidFileIO class
+ */
 public class AndroidFileIO implements FileIO {
     AssetManager assets;
     String rutaAlmacenamientoExterno;
 
+    /**
+     * Constructor
+     * @param assets the assets
+     */
     public AndroidFileIO(AssetManager assets) {
         this.assets = assets;
         this.rutaAlmacenamientoExterno = Environment
@@ -20,16 +27,34 @@ public class AndroidFileIO implements FileIO {
                 + File.separator;
     }
 
+    /**
+     * Read asset
+     * @param nombreArchivo asset name
+     * @return the asset
+     * @throws IOException
+     */
     @Override
     public InputStream leerAsset(String nombreArchivo) throws IOException {
         return assets.open(nombreArchivo);
     }
 
+    /**
+     * Reds archive
+     * @param nombreArchivo archive name
+     * @return the archie
+     * @throws IOException
+     */
     @Override
     public InputStream leerArchivo(String nombreArchivo) throws IOException {
         return new FileInputStream(rutaAlmacenamientoExterno + nombreArchivo);
     }
 
+    /**
+     * Writes archive
+     * @param nombreArchivo archive name
+     * @return the archive
+     * @throws IOException
+     */
     @Override
     public OutputStream escribirArchivo(String nombreArchivo) throws IOException {
         return new FileOutputStream(rutaAlmacenamientoExterno + nombreArchivo);

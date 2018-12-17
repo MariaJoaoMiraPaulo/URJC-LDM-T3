@@ -3,6 +3,9 @@ package juego;
 import liliana.piratas.Pixmap;
 import liliana.piratas.Sonido;
 
+/**
+ * All the pixmaps
+ */
 public class Assets {
     public static Pixmap fondo;
     public static Pixmap logo;
@@ -15,10 +18,10 @@ public class Assets {
     public static Pixmap preparado;
     public static Pixmap menupausa;
     public static Pixmap finjuego;
-    public static Pixmap barcoarriba;
-    public static Pixmap barcoizquierda;
-    public static Pixmap barcoabajo;
-    public static Pixmap barcoderecha;
+    public static Pixmap serpientearriba;
+    public static Pixmap serpienteizquierda;
+    public static Pixmap serpienteabajo;
+    public static Pixmap serpientederecha;
     public static Pixmap tripulacion;
     public static Pixmap botin1;
     public static Pixmap botin2;

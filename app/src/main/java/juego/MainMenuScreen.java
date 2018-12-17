@@ -6,11 +6,18 @@ import liliana.piratas.Graficos;
 import liliana.piratas.Input.TouchEvent;
 import liliana.piratas.Pantalla;
 
+/**
+ * Main menu classe
+ */
 public class MainMenuScreen extends Pantalla {
     public MainMenuScreen(Juego juego) {
         super(juego);
     }
 
+    /**
+     * Update main menu
+     * @param deltaTime the time
+     */
     @Override
     public void update(float deltaTime) {
         Graficos g = juego.getGraphics();
@@ -52,6 +59,15 @@ public class MainMenuScreen extends Pantalla {
         }
     }
 
+    /**
+     * Checks if event is in bound
+     * @param event the event
+     * @param x x pos
+     * @param y y pos
+     * @param width width
+     * @param height height
+     * @return boolean
+     */
     private boolean inBounds(TouchEvent event, int x, int y, int width, int height) {
         if(event.x > x && event.x < x + width - 1 &&
                 event.y > y && event.y < y + height - 1)
@@ -60,6 +76,10 @@ public class MainMenuScreen extends Pantalla {
             return false;
     }
 
+    /**
+     * Draws graphics
+     * @param deltaTime the time
+     */
     @Override
     public void present(float deltaTime) {
         Graficos g = juego.getGraphics();
@@ -73,6 +93,9 @@ public class MainMenuScreen extends Pantalla {
             g.drawPixmap(Assets.botones, 0, 416, 64, 0, 64, 64);
     }
 
+    /**
+     * Pause
+     */
     @Override
     public void pause() {
         Configuraciones.save(juego.getFileIO());

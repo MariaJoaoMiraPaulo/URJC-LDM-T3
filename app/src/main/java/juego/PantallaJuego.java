@@ -11,6 +11,9 @@ import liliana.piratas.Input.TouchEvent;
 import liliana.piratas.Pixmap;
 import liliana.piratas.Pantalla;
 
+/**
+ * Pantalla Juego class
+ */
 public class PantallaJuego extends Pantalla {
     enum EstadoJuego {
         Preparado,
@@ -29,6 +32,10 @@ public class PantallaJuego extends Pantalla {
         mundo = new Mundo();
     }
 
+    /**
+     * Updates the game state.
+     * @param deltaTime the time.
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = juego.getInput().getTouchEvents();
@@ -45,11 +52,20 @@ public class PantallaJuego extends Pantalla {
 
     }
 
+    /**
+     * Change game state to "Ejecuntadose".
+     * @param touchEvents the touch events
+     */
     private void updateReady(List<TouchEvent> touchEvents) {
         if(touchEvents.size() > 0)
             estado = EstadoJuego.Ejecutandose;
     }
 
+    /**
+     * Changes the game state depending on the event.
+     * @param touchEvents the touch events
+     * @param deltaTime the delta time
+     */
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) {
         int len = touchEvents.size();
         for(int i = 0; i < len; i++) {
@@ -86,6 +102,10 @@ public class PantallaJuego extends Pantalla {
         }
     }
 
+    /**
+     * Changes the game state to paused
+     * @param touchEvents the touch events
+     */
     private void updatePaused(List<TouchEvent> touchEvents) {
         int len = touchEvents.size();
         for(int i = 0; i < len; i++) {
@@ -109,6 +129,10 @@ public class PantallaJuego extends Pantalla {
         }
     }
 
+    /**
+     * Changes the game state to game over
+     * @param touchEvents the touch events
+     */
     private void updateGameOver(List<TouchEvent> touchEvents) {
         int len = touchEvents.size();
         for(int i = 0; i < len; i++) {
@@ -126,6 +150,10 @@ public class PantallaJuego extends Pantalla {
     }
 
 
+    /**
+     * Chooses what to draw on the scree
+     * @param deltaTime the delta time
+     */
     @Override
     public void present(float deltaTime) {
         Graficos g = juego.getGraphics();
@@ -145,6 +173,10 @@ public class PantallaJuego extends Pantalla {
         drawText(g, puntuacion, g.getWidth() / 2 - puntuacion.length()*20 / 2, g.getHeight() - 42);
     }
 
+    /**
+     * Draws the world
+     * @param mundo the world
+     */
     private void drawWorld(Mundo mundo) {
         Graficos g = juego.getGraphics();
         JollyRoger jollyroger = mundo.jollyroger;
@@ -173,18 +205,21 @@ public class PantallaJuego extends Pantalla {
 
         Pixmap headPixmap = null;
         if(jollyroger.direccion == JollyRoger.ARRIBA)
-            headPixmap = Assets.barcoarriba;
+            headPixmap = Assets.serpientearriba;
         if(jollyroger.direccion == JollyRoger.IZQUIERDA)
-            headPixmap = Assets.barcoizquierda;
+            headPixmap = Assets.serpienteizquierda;
         if(jollyroger.direccion == JollyRoger.ABAJO)
-            headPixmap = Assets.barcoabajo;
+            headPixmap = Assets.serpienteabajo;
         if(jollyroger.direccion == JollyRoger.DERECHA)
-            headPixmap = Assets.barcoderecha;
+            headPixmap = Assets.serpientederecha;
         x = head.x * 32 + 16;
         y = head.y * 32 + 16;
         g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
     }
 
+    /**
+     * Draws ready interface
+     */
     private void drawReadyUI() {
         Graficos g = juego.getGraphics();
 
@@ -192,6 +227,9 @@ public class PantallaJuego extends Pantalla {
         g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 
+    /**
+     * Draws the running interface
+     */
     private void drawRunningUI() {
         Graficos g = juego.getGraphics();
 
@@ -201,6 +239,9 @@ public class PantallaJuego extends Pantalla {
         g.drawPixmap(Assets.botones, 256, 416, 0, 64, 64, 64);
     }
 
+    /**
+     * Draws the paused interface
+     */
     private void drawPausedUI() {
         Graficos g = juego.getGraphics();
 
@@ -208,6 +249,9 @@ public class PantallaJuego extends Pantalla {
         g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 
+    /**
+     * Draws the game over interface
+     */
     private void drawGameOverUI() {
         Graficos g = juego.getGraphics();
 
@@ -216,6 +260,13 @@ public class PantallaJuego extends Pantalla {
         g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 
+    /**
+     * Draws text
+     * @param g the graphics
+     * @param line the text
+     * @param x the x position
+     * @param y the y position
+     */
     public void drawText(Graficos g, String line, int x, int y) {
         int len = line.length();
         for (int i = 0; i < len; i++) {
@@ -241,6 +292,9 @@ public class PantallaJuego extends Pantalla {
         }
     }
 
+    /**
+     * Pauses the game
+     */
     @Override
     public void pause() {
         if(estado == EstadoJuego.Ejecutandose)

@@ -31,6 +31,12 @@ public class AndroidGraficos implements Graficos {
         this.paint = new Paint();
     }
 
+    /**
+     * Creates a new pixmap
+     * @param fileName the filename
+     * @param format the format
+     * @return created pixmap
+     */
     @Override
     public Pixmap newPixmap(String fileName, PixmapFormat format) {
         Config config = null;

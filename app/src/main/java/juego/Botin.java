@@ -1,5 +1,8 @@
 package juego;
 
+/**
+ * Button class
+ */
 public class Botin {
     public static final int TIPO_1 = 0;
     public static final int TIPO_2 = 1;

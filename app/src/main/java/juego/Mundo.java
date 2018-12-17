@@ -24,6 +24,9 @@ public class Mundo {
         colocarBotin();
     }
 
+    /**
+     * Place button
+     */
     private void colocarBotin() {
         for (int x = 0; x < MUNDO_ANCHO; x++) {
             for (int y = 0; y < MUNDO_ALTO; y++) {
@@ -54,6 +57,10 @@ public class Mundo {
         botin = new Botin(botinX, botinY, random.nextInt(3));
     }
 
+    /**
+     * Update game
+     * @param deltaTime the time
+     */
     public void update(float deltaTime) {
         if (finalJuego)
 

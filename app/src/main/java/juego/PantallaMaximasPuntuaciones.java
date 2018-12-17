@@ -7,6 +7,9 @@ import liliana.piratas.Graficos;
 import liliana.piratas.Pantalla;
 import liliana.piratas.Input.TouchEvent;
 
+/**
+ * Highscore screen
+ */
 public class PantallaMaximasPuntuaciones extends Pantalla {
     String lineas[] = new String[5];
 
@@ -18,6 +21,10 @@ public class PantallaMaximasPuntuaciones extends Pantalla {
         }
     }
 
+    /**
+     * Updates the highscore screen
+     * @param deltaTime the time
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = juego.getInput().getTouchEvents();
@@ -37,6 +44,10 @@ public class PantallaMaximasPuntuaciones extends Pantalla {
         }
     }
 
+    /**
+     * Draws the highscore screen
+     * @param deltaTime the time
+     */
     @Override
     public void present(float deltaTime) {
         Graficos g = juego.getGraphics();
@@ -53,6 +64,13 @@ public class PantallaMaximasPuntuaciones extends Pantalla {
         g.drawPixmap(Assets.botones, 0, 416, 64, 64, 64, 64);
     }
 
+    /**
+     * Draws a text
+     * @param g the graphic
+     * @param linea the line
+     * @param x the x
+     * @param y the y
+     */
     public void dibujarTexto(Graficos g, String linea, int x, int y) {
         int len = linea.length();
         for (int i = 0; i < len; i++) {

@@ -19,17 +19,24 @@ public class JollyRoger{
         partes.add(new Tripulacion(5, 8));
     }
 
+    /**
+     * Turn left
+     */
     public void girarIzquierda() {
         direccion += 1;
         if(direccion > DERECHA)
             direccion = ARRIBA;
     }
 
+    /**
+     * Turn right
+     */
     public void girarDerecha() {
         direccion -= 1;
         if(direccion < ARRIBA)
             direccion = DERECHA;
     }
+
 
     public void abordaje() {
         Tripulacion end = partes.get(partes.size()-1);
@@ -66,6 +73,10 @@ public class JollyRoger{
             barco.y = 0;
     }
 
+    /**
+     * Check for collision
+     * @return the boolean
+     */
     public boolean comprobarChoque() {
         int len = partes.size();
         Tripulacion barco = partes.get(0);

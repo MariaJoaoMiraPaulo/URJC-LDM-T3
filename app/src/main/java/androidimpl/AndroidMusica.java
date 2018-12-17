@@ -26,6 +26,9 @@ public class AndroidMusica implements Musica, OnCompletionListener {
         }
     }
 
+    /**
+     * Dispose media
+     */
     @Override
     public void dispose() {
         if (mediaPlayer.isPlaying())
@@ -33,27 +36,45 @@ public class AndroidMusica implements Musica, OnCompletionListener {
         mediaPlayer.release();
     }
 
+    /**
+     * Is music looping
+     * @return the boolean
+     */
     @Override
     public boolean isLooping() {
         return mediaPlayer.isLooping();
     }
 
+    /**
+     * Is music playing
+     * @return the boolean
+     */
     @Override
     public boolean isPlaying() {
         return mediaPlayer.isPlaying();
     }
 
+    /**
+     * Is music stopped
+     * @return the boolean
+     */
     @Override
     public boolean isStopped() {
         return !isPrepared;
     }
 
+    /**
+     * Pause media
+     */
     @Override
     public void pause() {
         if (mediaPlayer.isPlaying())
             mediaPlayer.pause();
     }
 
+    /**
+     * Play media
+     */
     @Override
     public void play() {
         if (mediaPlayer.isPlaying())
